@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+{% block title %}
+<title>Product Site | Searched Products</title>
+{% endblock %}
+
+{% block content %}
+<div class='container'>
+    <div class='row'>
+        <h4>Searched Products</h4>
+    </div>
+    <div class='row'>
+        {% if searched_products %}
+        {% for product in searched_products %}
+        <div class='col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2'>
+            <a href="">
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">
+                        <img src="{{product.image.url}}">
+
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class='row'>
+            <h3>Product Not Available! Check Back Later</h3>
+        </div>
+        {% endif %}
+
+
+    </div>
+</div>
+{% endblock %}

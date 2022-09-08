@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        {% for product in pages %}
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{product.imageUrl}}">
+            <div class="box-element product">
+                <h6><strong>{{product.name}}</strong></h6>
+                <hr>
+                
+                <h6>{{product.category}}</h6>
+                <br>
+
+                <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart   ">Add to cart</button>
+                <a class="btn btn-outline-success" href="#">View</a>
+                <h4 style="display: inlineblock; float: right">#{{product.price|floatformat:2}}</h4>
+
+            </div>
+        </div> 
+
+        {% endfor %}
+    </div>
+    <br>
+    <hr>
+    <br>
+    <br>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {% if pages.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{pages.previous_page_number}}">Previous</a>
+                </li>
+                {% endif %}
+
+                {% if pages.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{pages.next_page_number}}">Next</a>
+                    <span class="sr-only">Next </span>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>   
+
+    </nav>
+    
+
+
+{% endblock content %}
